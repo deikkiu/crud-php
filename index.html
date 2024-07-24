@@ -8,8 +8,473 @@
     <link rel="stylesheet" href="/css/normalize.css" />
     <link rel="stylesheet" href="/css/font.css" />
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/media.css" />
 
     <title>PHP - CRUD App</title>
   </head>
-  <body></body>
+  <body>
+    <main class="main">
+      <section class="head">
+        <h1 class="head__title">Список аккаунтов</h1>
+
+        <button class="button head__button" type="button">
+          <span>Добавить аккаунт</span>
+        </button>
+      </section>
+
+      <section class="account">
+        <div class="account__list">
+          <div class="account__item">
+            <div class="account__item-info">
+              <div class="account__item-photo">
+                <img src="./1.jpg" alt="Photo" />
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Имя:</span>
+                <span>Тимур</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Фамилия:</span>
+                <span>Пупкин</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Email:</span>
+                <a href="mailto:example@mail.ru">example@mail.ru</a>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Компания:</span>
+                <span>TOO Company</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Должность:</span>
+                <span>Head of IT</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Телефон:</span>
+                <div class="account__item-tels">
+                  <a href="tel:77788789979">77788789979</a>
+                  <a href="tel:77788789979">77788789979</a>
+                  <a href="tel:77788789979">77788789979</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="account__item-btn">
+              <button class="button button__edit" type="button">
+                <span>Изменить</span>
+              </button>
+              <button class="button button__delete" type="button">
+                <span>Удалить</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="account__item">
+            <div class="account__item-info">
+              <div class="account__item-photo">
+                <img src="./1.jpg" alt="Photo" />
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Имя:</span>
+                <span>Тимур</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Фамилия:</span>
+                <span>Пупкин</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Email:</span>
+                <a href="mailto:example@mail.ru">example@mail.ru</a>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Компания:</span>
+                <span>TOO Company</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Должность:</span>
+                <span>Head of IT</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Телефон:</span>
+                <div class="account__item-tels">
+                  <a href="tel:77788789979">77788789979</a>
+                  <a href="tel:77788789979">77788789979</a>
+                  <a href="tel:77788789979">77788789979</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="account__item-btn">
+              <button class="button button__edit" type="button">
+                <span>Изменить</span>
+              </button>
+              <button class="button button__delete" type="button">
+                <span>Удалить</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="account__item">
+            <div class="account__item-info">
+              <div class="account__item-photo">
+                <img src="./1.jpg" alt="Photo" />
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Имя:</span>
+                <span>Тимур</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Фамилия:</span>
+                <span>Пупкин</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Email:</span>
+                <a href="mailto:example@mail.ru">example@mail.ru</a>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Компания:</span>
+                <span>TOO Company</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Должность:</span>
+                <span>Head of IT</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Телефон:</span>
+                <div class="account__item-tels">
+                  <a href="tel:77788789979">77788789979</a>
+                  <a href="tel:77788789979">77788789979</a>
+                  <a href="tel:77788789979">77788789979</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="account__item-btn">
+              <button class="button button__edit" type="button">
+                <span>Изменить</span>
+              </button>
+              <button class="button button__delete" type="button">
+                <span>Удалить</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="account__item">
+            <div class="account__item-info">
+              <div class="account__item-photo">
+                <img src="./1.jpg" alt="Photo" />
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Имя:</span>
+                <span>Тимур</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Фамилия:</span>
+                <span>Пупкин</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Email:</span>
+                <a href="mailto:example@mail.ru">example@mail.ru</a>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Компания:</span>
+                <span>TOO Company</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Должность:</span>
+                <span>Head of IT</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Телефон:</span>
+                <div class="account__item-tels">
+                  <a href="tel:77788789979">77788789979</a>
+                  <a href="tel:77788789979">77788789979</a>
+                  <a href="tel:77788789979">77788789979</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="account__item-btn">
+              <button class="button button__edit" type="button">
+                <span>Изменить</span>
+              </button>
+              <button class="button button__delete" type="button">
+                <span>Удалить</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="account__item">
+            <div class="account__item-info">
+              <div class="account__item-photo">
+                <img src="./1.jpg" alt="Photo" />
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Имя:</span>
+                <span>Тимур</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Фамилия:</span>
+                <span>Пупкин</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Email:</span>
+                <a href="mailto:example@mail.ru">example@mail.ru</a>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Компания:</span>
+                <span>TOO Company</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Должность:</span>
+                <span>Head of IT</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Телефон:</span>
+                <div class="account__item-tels">
+                  <a href="tel:77788789979">77788789979</a>
+                  <a href="tel:77788789979">77788789979</a>
+                  <a href="tel:77788789979">77788789979</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="account__item-btn">
+              <button class="button button__edit" type="button">
+                <span>Изменить</span>
+              </button>
+              <button class="button button__delete" type="button">
+                <span>Удалить</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="account__item">
+            <div class="account__item-info">
+              <div class="account__item-photo">
+                <img src="./1.jpg" alt="Photo" />
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Имя:</span>
+                <span>Тимур</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Фамилия:</span>
+                <span>Пупкин</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Email:</span>
+                <a href="mailto:example@mail.ru">example@mail.ru</a>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Компания:</span>
+                <span>TOO Company</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Должность:</span>
+                <span>Head of IT</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Телефон:</span>
+                <div class="account__item-tels">
+                  <a href="tel:77788789979">77788789979</a>
+                  <a href="tel:77788789979">77788789979</a>
+                  <a href="tel:77788789979">77788789979</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="account__item-btn">
+              <button class="button button__edit" type="button">
+                <span>Изменить</span>
+              </button>
+              <button class="button button__delete" type="button">
+                <span>Удалить</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="account__item">
+            <div class="account__item-info">
+              <div class="account__item-photo">
+                <img src="./1.jpg" alt="Photo" />
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Имя:</span>
+                <span>Тимур</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Фамилия:</span>
+                <span>Пупкин</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Email:</span>
+                <a href="mailto:example@mail.ru">example@mail.ru</a>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Компания:</span>
+                <span>TOO Company</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Должность:</span>
+                <span>Head of IT</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Телефон:</span>
+                <div class="account__item-tels">
+                  <a href="tel:77788789979">77788789979</a>
+                  <a href="tel:77788789979">77788789979</a>
+                  <a href="tel:77788789979">77788789979</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="account__item-btn">
+              <button class="button button__edit" type="button">
+                <span>Изменить</span>
+              </button>
+              <button class="button button__delete" type="button">
+                <span>Удалить</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="account__item">
+            <div class="account__item-info">
+              <div class="account__item-photo">
+                <img src="./1.jpg" alt="Photo" />
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Имя:</span>
+                <span>Тимур</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Фамилия:</span>
+                <span>Пупкин</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Email:</span>
+                <a href="mailto:example@mail.ru">example@mail.ru</a>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Компания:</span>
+                <span>TOO Company</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Должность:</span>
+                <span>Head of IT</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Телефон:</span>
+                <div class="account__item-tels">
+                  <a href="tel:77788789979">77788789979</a>
+                  <a href="tel:77788789979">77788789979</a>
+                  <a href="tel:77788789979">77788789979</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="account__item-btn">
+              <button class="button button__edit" type="button">
+                <span>Изменить</span>
+              </button>
+              <button class="button button__delete" type="button">
+                <span>Удалить</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="account__item">
+            <div class="account__item-info">
+              <div class="account__item-photo">
+                <img src="./1.jpg" alt="Photo" />
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Имя:</span>
+                <span>Тимур</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Фамилия:</span>
+                <span>Пупкин</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Email:</span>
+                <a href="mailto:example@mail.ru">example@mail.ru</a>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Компания:</span>
+                <span>TOO Company</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Должность:</span>
+                <span>Head of IT</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Телефон:</span>
+                <div class="account__item-tels">
+                  <a href="tel:77788789979">77788789979</a>
+                  <a href="tel:77788789979">77788789979</a>
+                  <a href="tel:77788789979">77788789979</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="account__item-btn">
+              <button class="button button__edit" type="button">
+                <span>Изменить</span>
+              </button>
+              <button class="button button__delete" type="button">
+                <span>Удалить</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="account__item">
+            <div class="account__item-info">
+              <div class="account__item-photo">
+                <img src="./1.jpg" alt="Photo" />
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Имя:</span>
+                <span>Тимур</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Фамилия:</span>
+                <span>Пупкин</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Email:</span>
+                <a href="mailto:example@mail.ru">example@mail.ru</a>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Компания:</span>
+                <span>TOO Company</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Должность:</span>
+                <span>Head of IT</span>
+              </div>
+              <div class="account__item-text">
+                <span class="account__item-sub">Телефон:</span>
+                <div class="account__item-tels">
+                  <a href="tel:77788789979">77788789979</a>
+                  <a href="tel:77788789979">77788789979</a>
+                  <a href="tel:77788789979">77788789979</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="account__item-btn">
+              <button class="button button__edit" type="button">
+                <span>Изменить</span>
+              </button>
+              <button class="button button__delete" type="button">
+                <span>Удалить</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
