@@ -65,7 +65,7 @@ body {
 }
 
 .button:hover {
-  box-shadow: 0px 0px 12px 2px var(--main-color);
+  box-shadow: 0px 0px 8px 1px var(--main-color);
 }
 
 .button span {
@@ -172,7 +172,7 @@ body {
 }
 
 .button.button__delete:hover {
-  box-shadow: 0px 0px 12px 2px var(--red-color);
+  box-shadow: 0px 0px 8px 1px var(--red-color);
 }
 
 /* pagination */
@@ -229,3 +229,105 @@ body {
   cursor: not-allowed;
   pointer-events: none;
 }
+
+/* form */
+.body__form {
+  background-color: rgba(47, 128, 237, 0.2);
+}
+
+main.main__form {
+  margin: 0;
+  padding: 0 30px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  width: 100%;
+  max-width: 800px;
+
+  background-color: var(--white-color);
+}
+
+form {
+  padding: 96px;
+
+  display: flex;
+  flex-direction: column;
+
+  row-gap: 32px;
+}
+
+.form__block {
+  display: flex;
+  flex-direction: column;
+  
+  row-gap: 8px;
+}
+
+.form__block label {
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #666666;
+}
+
+.form__block input {
+  width: 100%;
+
+  padding: 16px;
+  border: 1px solid #CCCCCC;
+  border-radius: 8px;
+
+  outline: none;
+
+  font-size: 16px;
+  font-weight: 400;
+
+  color: var(--black-color);
+}
+
+.form__block input::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+
+  color: #666666;
+}
+
+.form__btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.form__button {
+  width: 172px;
+
+  padding: 16px;
+
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.form__button-add {
+  background-color: var(--main-color);
+
+  color: var(--white-color);
+}
+
+.form__button-reset {
+  background-color: var(--red-color);
+
+  color: var(--white-color);
+}
+
+.form__button-reset:hover {
+  box-shadow: 0px 0px 8px 1px var(--red-color);
+}
+
+
+
