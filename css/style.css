@@ -109,7 +109,7 @@ body {
 
 .account__item-info {
   display: grid;
-  grid-template-columns: 100px repeat(6, auto);
+  grid-template-columns: repeat(6, auto);
 
   column-gap: 30px;
 }
