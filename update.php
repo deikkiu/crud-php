@@ -27,6 +27,15 @@ $account = mysqli_fetch_assoc($account);
 <body class="body__form">
   <main class="main main__form">
     <section class="form">
+
+      <div class="back">
+        <a href="/" class="back__link">
+          <img src="/icons/back.svg" alt="Back">
+        </a>
+
+        <h1 class="form__title">Изменить аккаунт</h1>
+      </div>
+
       <form action="vendor/update.php" method="post">
 
         <!-- hidden id input -->
@@ -59,15 +68,12 @@ $account = mysqli_fetch_assoc($account);
 
         <div class="form__block">
           <label for="tel">Телефон</label>
-          <input id="tel1" type="tel" name="tel1" placeholder="Введите номер телефона" />
-          <input id="tel2" type="tel" name="tel2" placeholder="Введите доп. номер телефона" />
-          <input id="tel3" type="tel" name="tel3" placeholder="Введите доп. номер телефона" />
+          <input value="<?= $account['phone1'] ?>" id="tel1" type="tel" name="tel1" placeholder="Введите номер телефона" />
+          <input value="<?= $account['phone2'] ?>" id="tel2" type="tel" name="tel2" placeholder="Введите доп. номер телефона" />
+          <input value="<?= $account['phone3'] ?>" id="tel3" type="tel" name="tel3" placeholder="Введите доп. номер телефона" />
         </div>
 
-        <div class="form__btns">
-          <button class="button form__button form__button-reset" type="reset">
-            Очистить
-          </button>
+        <div class="form__btn">
           <button class="button form__button form__button-add" type="submit">
             Изменить
           </button>

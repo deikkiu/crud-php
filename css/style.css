@@ -94,7 +94,7 @@ body {
 
   gap: 40px;
 
-  padding: 16px;
+  padding: 16px 20px;
   background-color: var(--white-color);
   border-radius: 8px;
 }
@@ -109,7 +109,7 @@ body {
 
 .account__item-info {
   display: grid;
-  grid-template-columns: repeat(6, auto);
+  grid-template-columns: repeat(6, 1fr);
 
   column-gap: 30px;
 }
@@ -250,13 +250,17 @@ main.main__form {
   background-color: var(--white-color);
 }
 
-form {
+.form {
   padding: 96px;
+}
 
+form {
   display: flex;
   flex-direction: column;
 
   row-gap: 32px;
+
+  margin-top: 32px;
 }
 
 .form__block {
@@ -329,5 +333,31 @@ form {
   box-shadow: 0px 0px 8px 1px var(--red-color);
 }
 
+.back {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  column-gap: 40px;
+  row-gap: 10px;
+}
+
+.back__link {
+  display: flex;
+}
+
+.back__link img {
+  width: 24px;
+  height: 24px;
+
+  object-fit: contain;
+}
+
+.form__title {
+  font-size: 24px;
+  font-weight: 600;
+
+  color: var(--black-color);
+}
 
 

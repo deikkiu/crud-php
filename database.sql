@@ -1,23 +1,16 @@
 CREATE DATABASE crud;
 
-use crud;
+USE crud;
 
-CREATE TABLE accounts
-(
-	id int NOT NULL AUTO_INCREMENT,
-    name varchar(255) NOT NULL,
-    surname varchar(255) NOT NULL,
-    email varchar(255) UNIQUE NOT NULL,
-	company varchar(255) NULL,
-    position varchar(255) NULL,
+CREATE TABLE accounts (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    surname VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    company VARCHAR(255) NULL,
+    position VARCHAR(255) NULL,
+    phone1 VARCHAR(20) NULL,
+    phone2 VARCHAR(20) NULL,
+    phone3 VARCHAR(20) NULL,
     PRIMARY KEY(id)
-);
-
-CREATE TABLE phones
-(
-	id int NOT NULL AUTO_INCREMENT,
-	account_id int NOT NULL,
-    phone_number bigint(11) NOT NULL,
-    PRIMARY KEY(id),
-    FOREIGN KEY(account_id) REFERENCES accounts(id)
 );

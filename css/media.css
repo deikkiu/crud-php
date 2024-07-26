@@ -21,11 +21,11 @@
   }
 
   .account__item {
-    padding: 14px;
+    padding: 14px 16px;
   }
 
   .account__item-info {
-    grid-template-columns: repeat(6, auto);
+    grid-template-columns: repeat(6, 1fr);
     column-gap: 20px;
   }
 
@@ -100,9 +100,7 @@
   /* form */
   .form {
     max-width: 600px;
-  }
 
-  form {
     padding: 48px;
   }
 
@@ -137,7 +135,7 @@
   }
 
   .account__item {
-    padding: 16px 12px;
+    padding: 14px;
   }
 
   .account__item-text > span, a {
@@ -167,9 +165,7 @@
     /* form */
     .form {
       max-width: 500px;
-    }
-  
-    form {
+
       padding: 36px;
     }
   
@@ -221,14 +217,12 @@
 
   /* form */
   main.main__form {
-    padding: 10px;
+    padding: 0px;
   }
 
   .form {
     max-width: 400px;
-  }
 
-  form {
     padding: 20px;
     row-gap: 24px;
   }
@@ -246,5 +240,20 @@
 
     padding: 14px;
     font-size: 14px;
+  }
+  
+  .form__btn > button {
+    width: 100%;
+  }
+
+
+  .back__link img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+  }
+
+  .form__title {
+    font-size: 22px;
   }
 }

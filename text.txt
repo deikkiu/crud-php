@@ -1,0 +1,6 @@
+1. Back button and form title [done]
+2. PDO
+3. File system
+4. OOP
+5. Pagination
+6. Validation

@@ -5,9 +5,6 @@ require_once 'config/connect.php';
 $accounts = mysqli_query($connect, "SELECT * FROM `accounts`");
 $accounts = mysqli_fetch_all($accounts);
 
-$phones = mysqli_query($connect, "SELECT * FROM `phones`");
-$phones = mysqli_fetch_all($phones);
-
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +28,7 @@ $phones = mysqli_fetch_all($phones);
     <section class="head">
       <h1 class="head__title">Список аккаунтов</h1>
 
-      <a href="/form.html" class="button head__button">
+      <a href="create.php" class="button head__button">
         <span>Добавить аккаунт</span>
       </a>
     </section>
@@ -67,10 +64,16 @@ $phones = mysqli_fetch_all($phones);
                 <span class="account__item-sub">Телефон:</span>
                 <div class="account__item-tels">
                   <?php
-                  foreach ($phones as $phone) {
-                    if ($phone[1] == $account[0]) {
-                      echo '<a href="tel:' . $phone[2] . '">' . $phone[2] . '</a>';
-                    }
+                  if ($account[6]) {
+                    echo '<a href="tel:' . $account[6] . '">' . $account[6] . '</a>';
+                  }
+
+                  if ($account[7]) {
+                    echo '<a href="tel:' . $account[7] . '">' . $account[7] . '</a>';
+                  }
+
+                  if ($account[8]) {
+                    echo '<a href="tel:' . $account[8] . '">' . $account[8] . '</a>';
                   }
                   ?>
                 </div>
@@ -81,9 +84,9 @@ $phones = mysqli_fetch_all($phones);
               <a href="update.php?id=<?= $account[0] ?>" class="button button__edit">
                 <span>Изменить</span>
               </a>
-              <button class="button button__delete" type="button">
+              <a href="vendor/delete.php?id=<?= $account[0] ?>" class="button button__delete">
                 <span>Удалить</span>
-              </button>
+              </a>
             </div>
           </div>
 
