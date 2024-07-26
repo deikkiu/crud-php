@@ -1,9 +1,8 @@
 <?php
 
-require_once '../config/connect.php';
+require_once '../lib/Database.php';
 
-$account_id = $_GET['id'];
-
-mysqli_query($connect, "DELETE FROM accounts WHERE `accounts`.`id` = '$account_id'");
+$db = new Database();
+$db->deleteAccount($_GET['id']);
 
 header('Location: /');

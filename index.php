@@ -1,9 +1,9 @@
 <?php
 
-require_once 'config/connect.php';
+require_once 'lib/Database.php';
 
-$accounts = mysqli_query($connect, "SELECT * FROM `accounts`");
-$accounts = mysqli_fetch_all($accounts);
+$db = new Database();
+$accounts = $db->getAllAccounts();
 
 ?>
 
@@ -42,38 +42,38 @@ $accounts = mysqli_fetch_all($accounts);
             <div class="account__item-info">
               <div class="account__item-text">
                 <span class="account__item-sub">Имя:</span>
-                <span><?= $account[1] ?></span>
+                <span><?= $account['name'] ?></span>
               </div>
               <div class="account__item-text">
                 <span class="account__item-sub">Фамилия:</span>
-                <span><?= $account[2] ?></span>
+                <span><?= $account['surname'] ?></span>
               </div>
               <div class="account__item-text">
                 <span class="account__item-sub">Email:</span>
-                <a href="mailto:<?= $account[3] ?>"><?= $account[3] ?></a>
+                <a href="mailto:<?= $account['email'] ?>"><?= $account['email'] ?></a>
               </div>
               <div class="account__item-text">
                 <span class="account__item-sub">Компания:</span>
-                <span><?= $account[4] ?></span>
+                <span><?= $account['company'] ?></span>
               </div>
               <div class="account__item-text">
                 <span class="account__item-sub">Должность:</span>
-                <span><?= $account[5] ?></span>
+                <span><?= $account['position'] ?></span>
               </div>
               <div class="account__item-text">
                 <span class="account__item-sub">Телефон:</span>
                 <div class="account__item-tels">
                   <?php
-                  if ($account[6]) {
-                    echo '<a href="tel:' . $account[6] . '">' . $account[6] . '</a>';
+                  if ($account['phone1']) {
+                    echo '<a href="tel:' . $account['phone1'] . '">' . $account['phone1'] . '</a>';
                   }
 
-                  if ($account[7]) {
-                    echo '<a href="tel:' . $account[7] . '">' . $account[7] . '</a>';
+                  if ($account['phone2']) {
+                    echo '<a href="tel:' . $account['phone2'] . '">' . $account['phone2'] . '</a>';
                   }
 
-                  if ($account[8]) {
-                    echo '<a href="tel:' . $account[8] . '">' . $account[8] . '</a>';
+                  if ($account['phone3']) {
+                    echo '<a href="tel:' . $account['phone3'] . '">' . $account['phone3'] . '</a>';
                   }
                   ?>
                 </div>
@@ -81,10 +81,10 @@ $accounts = mysqli_fetch_all($accounts);
             </div>
 
             <div class="account__item-btn">
-              <a href="update.php?id=<?= $account[0] ?>" class="button button__edit">
+              <a href="update.php?id=<?= $account['id'] ?>" class="button button__edit">
                 <span>Изменить</span>
               </a>
-              <a href="vendor/delete.php?id=<?= $account[0] ?>" class="button button__delete">
+              <a href="vendor/delete.php?id=<?= $account['id'] ?>" class="button button__delete">
                 <span>Удалить</span>
               </a>
             </div>

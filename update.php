@@ -1,11 +1,11 @@
 <?php
 
-require_once 'config/connect.php';
+require_once 'lib/Database.php';
 
-$account_id = $_GET['id'];
+$id = $_GET['id'];
 
-$account = mysqli_query($connect, "SELECT * FROM `accounts` WHERE `id` = '$account_id'");
-$account = mysqli_fetch_assoc($account);
+$db = new Database();
+$account = $db->getAccountById($id);
 
 ?>
 
@@ -39,7 +39,7 @@ $account = mysqli_fetch_assoc($account);
       <form action="vendor/update.php" method="post">
 
         <!-- hidden id input -->
-        <input hidden name="id" value="<?= $account_id ?>">
+        <input hidden name="id" value="<?= $id ?>">
 
         <div class="form__block">
           <label for="name">Имя</label>
