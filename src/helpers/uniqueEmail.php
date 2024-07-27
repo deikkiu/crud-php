@@ -1,8 +1,8 @@
 <?php
 
-function checkUniqueEmail($context, $email, $id = null)
+function checkUniqueEmail($connect, $email, $id = null)
 {
-  $stmt = $context->connect->prepare("SELECT COUNT(*) FROM accounts WHERE email = ? AND id != ?");
+  $stmt = $connect->prepare("SELECT COUNT(*) FROM accounts WHERE email = ? AND id != ?");
   $stmt->execute([$email, $id]);
 
   $result = $stmt->fetch();

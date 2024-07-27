@@ -18,7 +18,7 @@ class Database
     $this->dbConnect();
   }
 
-  public function dbConnect()
+  private function dbConnect()
   {
     try {
       $this->connect = new PDO("mysql:host=$this->host;dbname=$this->database;", $this->user, $this->password);
@@ -33,6 +33,23 @@ class Database
     try {
       $sql = "SELECT * FROM accounts";
       $stmt = $this->connect->query($sql);
+      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      return $result;
+    } catch (PDOException $e) {
+      print "Error!: " . $e->getMessage();
+      die();
+    }
+  }
+
+  public function getAccountsByLimit($start, $end)
+  {
+    try {
+      $sql = "SELECT * FROM accounts LIMIT :start, :end;";
+      $stmt = $this->connect->prepare($sql);
+      $stmt->bindValue(':start', $start, PDO::PARAM_INT);
+      $stmt->bindValue(':end', $end, PDO::PARAM_INT);
+      $stmt->execute();
       $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       return $result;
@@ -57,6 +74,22 @@ class Database
     }
   }
 
+  public function getAccountsLength()
+  {
+    try {
+      $sql = "SELECT * FROM accounts";
+      $stmt = $this->connect->query($sql);
+      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      return count($result);
+    } catch (PDOException $e) {
+      print "Error!: " . $e->getMessage();
+      die();
+    }
+  }
+
+  // crud methods
+
   public function createAccount($data)
   {
     $name = $data['name'];
@@ -68,7 +101,7 @@ class Database
     $phone2 = $data['tel2'];
     $phone3 = $data['tel3'];
 
-    if (!checkUniqueEmail($this, $email)) {
+    if (!checkUniqueEmail($this->connect, $email)) {
       try {
         $sql = "INSERT INTO `accounts` (`id`, `name`, `surname`, `email`, `company`, `position`, `phone1`, `phone2`, `phone3`) VALUES (:id, :name, :surname, :email, :company, :position, :phone1, :phone2, :phone3)";
         $params = [
@@ -106,7 +139,7 @@ class Database
     $phone2 = $data['tel2'];
     $phone3 = $data['tel3'];
 
-    if (!checkUniqueEmail($this, $email, $id)) {
+    if (!checkUniqueEmail($this->connect, $email, $id)) {
       try {
         $sql = "UPDATE `accounts` SET `name` = :name, `surname` = :surname, `email` = :email, `company` = :company, `position` = :position, `phone1` = :phone1, `phone2` = :phone2, `phone3` = :phone3 WHERE `accounts`.`id`= :id";
         $params = [

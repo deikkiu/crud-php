@@ -1,4 +1,0 @@
-1. Add alias php
-
-2. Pagination
-3. Validation

@@ -139,6 +139,9 @@ body {
   color: var(--black-color);
 
   text-decoration: none;
+
+  /* word-break */
+  word-break: break-all;
 }
 
 .account__item-text > span.account__item-sub {
@@ -146,6 +149,14 @@ body {
   font-weight: 600;
 
   color: var(--gray-color);
+}
+
+.account__item-text a {
+  transition: 0.2s color linear;
+}
+
+.account__item-text a:hover {
+  color: var(--main-color);
 }
 
 .account__item-tels {
@@ -190,7 +201,7 @@ body {
   gap: 5px;
 }
 
-.pagination > button {
+.pagination > a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -207,25 +218,20 @@ body {
   transition: 0.3s all linear;
 }
 
-.pagination > button.active {
+.pagination > a.active {
   border: 1px solid var(--main-color);
   background-color: var(--main-color);
 }
 
-.pagination > button.active span {
+.pagination > a.active span {
   color: var(--white-color);
 }
 
-.pagination > button:hover:not(.active):not(.dis) {
+.pagination > a:hover:not(.active):not(.dis) {
   transform: scale(0.9);
 }
 
-.pag__page.dis {
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-.pag__page.active {
+.pagination a.dis, .pagination a.active  {
   cursor: not-allowed;
   pointer-events: none;
 }
