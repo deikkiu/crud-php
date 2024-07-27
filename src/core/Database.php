@@ -1,6 +1,7 @@
 <?php
 
 require_once dirname(__DIR__) . '/config/config.php';
+require_once dirname(__DIR__) . '/helpers/uniqueEmail.php';
 
 class Database
 {
@@ -67,7 +68,7 @@ class Database
     $phone2 = $data['tel2'];
     $phone3 = $data['tel3'];
 
-    if (!$this->checkUniqueEmail($email)) {
+    if (!checkUniqueEmail($this, $email)) {
       try {
         $sql = "INSERT INTO `accounts` (`id`, `name`, `surname`, `email`, `company`, `position`, `phone1`, `phone2`, `phone3`) VALUES (:id, :name, :surname, :email, :company, :position, :phone1, :phone2, :phone3)";
         $params = [
@@ -105,7 +106,7 @@ class Database
     $phone2 = $data['tel2'];
     $phone3 = $data['tel3'];
 
-    if (!$this->checkUniqueEmail($email, $id)) {
+    if (!checkUniqueEmail($this, $email, $id)) {
       try {
         $sql = "UPDATE `accounts` SET `name` = :name, `surname` = :surname, `email` = :email, `company` = :company, `position` = :position, `phone1` = :phone1, `phone2` = :phone2, `phone3` = :phone3 WHERE `accounts`.`id`= :id";
         $params = [
@@ -142,18 +143,5 @@ class Database
       print "Error!: " . $e->getMessage();
       die();
     }
-  }
-
-
-  // не относится к database (можно вынести)
-  private function checkUniqueEmail($email, $id = null)
-  {
-    $stmt = $this->connect->prepare("SELECT COUNT(*) FROM accounts WHERE email = ? AND id != ?");
-    $stmt->execute([$email, $id]);
-
-    $result = $stmt->fetch();
-    $result =  filter_var($result[0], FILTER_VALIDATE_BOOLEAN);
-
-    return $result;
   }
 }

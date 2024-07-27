@@ -1,6 +1,6 @@
 <?php
 
-require_once 'lib/Database.php';
+require_once '../core/Database.php';
 
 $id = $_GET['id'];
 
@@ -17,10 +17,10 @@ $account = $db->getAccountById($id);
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="/css/normalize.css" />
-  <link rel="stylesheet" href="/css/font.css" />
-  <link rel="stylesheet" href="/css/style.css" />
-  <link rel="stylesheet" href="/css/media.css" />
+  <link rel="stylesheet" href="../../public/assets/css/normalize.css" />
+  <link rel="stylesheet" href="../../public/assets/css/font.css" />
+  <link rel="stylesheet" href="../../public/assets/css/style.css" />
+  <link rel="stylesheet" href="../../public/assets/css/media.css" />
   <title>Form</title>
 </head>
 
@@ -30,13 +30,13 @@ $account = $db->getAccountById($id);
 
       <div class="back">
         <a href="/" class="back__link">
-          <img src="/icons/back.svg" alt="Back">
+          <img src="../../public/assets/icons/back.svg" alt="Back">
         </a>
 
         <h1 class="form__title">Изменить аккаунт</h1>
       </div>
 
-      <form action="vendor/update.php" method="post">
+      <form action="../controllers/update.php" method="post">
 
         <!-- hidden id input -->
         <input hidden name="id" value="<?= $id ?>">

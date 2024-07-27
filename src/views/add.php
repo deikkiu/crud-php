@@ -5,10 +5,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="/css/normalize.css" />
-  <link rel="stylesheet" href="/css/font.css" />
-  <link rel="stylesheet" href="/css/style.css" />
-  <link rel="stylesheet" href="/css/media.css" />
+  <link rel="stylesheet" href="../../public/assets/css/normalize.css" />
+  <link rel="stylesheet" href="../../public/assets/css/font.css" />
+  <link rel="stylesheet" href="../../public/assets/css/style.css" />
+  <link rel="stylesheet" href="../../public/assets/css/media.css" />
   <title>Form</title>
 </head>
 
@@ -18,13 +18,13 @@
 
       <div class="back">
         <a href="/" class="back__link">
-          <img src="/icons/back.svg" alt="Back">
+          <img src="../../public/assets/icons/back.svg" alt="Back">
         </a>
 
         <h1 class="form__title">Создать аккаунт</h1>
       </div>
 
-      <form action="vendor/create.php" method="post">
+      <form action="../controllers/create.php" method="post">
         <div class="form__block">
           <label for="name">Имя</label>
           <input id="name" type="text" name="name" required placeholder="Введите имя*" />

@@ -1,6 +1,7 @@
 <?php
 
-require_once 'lib/Database.php';
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/src/core/Database.php';
 
 $db = new Database();
 $accounts = $db->getAllAccounts();
@@ -15,10 +16,10 @@ $accounts = $db->getAllAccounts();
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- styles -->
-  <link rel="stylesheet" href="/css/normalize.css" />
-  <link rel="stylesheet" href="/css/font.css" />
-  <link rel="stylesheet" href="/css/style.css" />
-  <link rel="stylesheet" href="/css/media.css" />
+  <link rel="stylesheet" href="public/assets/css/normalize.css" />
+  <link rel="stylesheet" href="public/assets/css/font.css" />
+  <link rel="stylesheet" href="public/assets/css/style.css" />
+  <link rel="stylesheet" href="public/assets/css/media.css" />
 
   <title>PHP - CRUD App</title>
 </head>
@@ -28,7 +29,7 @@ $accounts = $db->getAllAccounts();
     <section class="head">
       <h1 class="head__title">Список аккаунтов</h1>
 
-      <a href="create.php" class="button head__button">
+      <a href="src/views/add.php" class="button head__button">
         <span>Добавить аккаунт</span>
       </a>
     </section>
@@ -81,10 +82,10 @@ $accounts = $db->getAllAccounts();
             </div>
 
             <div class="account__item-btn">
-              <a href="update.php?id=<?= $account['id'] ?>" class="button button__edit">
+              <a href="src/views/update.php?id=<?= $account['id'] ?>" class="button button__edit">
                 <span>Изменить</span>
               </a>
-              <a href="vendor/delete.php?id=<?= $account['id'] ?>" class="button button__delete">
+              <a href="src/controllers/delete.php?id=<?= $account['id'] ?>" class="button button__delete">
                 <span>Удалить</span>
               </a>
             </div>
@@ -99,10 +100,10 @@ $accounts = $db->getAllAccounts();
 
     <section class="pagination">
       <button class="pag__first" type="button">
-        <img src="/icons/left-m.svg" alt="First" />
+        <img src="public/assets/icons/left-m.svg" alt="First" />
       </button>
       <button class="pag__back" type="button">
-        <img src="/icons/left.svg" alt="Back" />
+        <img src="public/assets/icons/left.svg" alt="Back" />
       </button>
       <button class="pag__page active" type="button">
         <span>1</span>
@@ -120,10 +121,10 @@ $accounts = $db->getAllAccounts();
         <span>10</span>
       </button>
       <button class="pag__next" type="button">
-        <img src="/icons/right.svg" alt="Next" />
+        <img src="public/assets/icons/right.svg" alt="Next" />
       </button>
       <button class="pag__last" type="button">
-        <img src="/icons/right-m.svg" alt="Last" />
+        <img src="public/assets/icons/right-m.svg" alt="Last" />
       </button>
     </section>
   </main>

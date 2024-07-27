@@ -1,6 +1,6 @@
 <?php
 
-require_once '../lib/Database.php';
+require_once '../core/Database.php';
 
 $db = new Database();
 $db->updateAccount($_POST);
