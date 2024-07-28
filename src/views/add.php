@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+
+$data = $_SESSION['form_data'] ?? null;
+$errors = $_SESSION['form_errors'] ?? null;
+
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -27,40 +36,66 @@
       <form action="../controllers/create.php" method="post">
         <div class="form__block">
           <label for="name">Имя</label>
-          <input id="name" type="text" name="name" required placeholder="Введите имя*" />
+          <input value="<?php if (isset($data)) {
+                          echo $data['name'];
+                        } ?>" id="name" type="text" name="name" required placeholder="Введите имя*" />
+          <?php if (isset($errors)) {
+            echo $errors['name'] ?? '';
+          } ?>
         </div>
 
         <div class="form__block">
           <label for="surname">Фамилия</label>
-          <input id="surname" type="text" name="surname" required placeholder="Введите фамилия*" />
+          <input value="<?php if (isset($data)) {
+                          echo $data['surname'];
+                        } ?>" id="surname" type="text" name="surname" required placeholder="Введите фамилия*" />
+          <?php if (isset($errors)) {
+            echo $errors['surname'] ?? '';
+          } ?>
         </div>
 
         <div class="form__block">
-          <label for="mail">Email</label>
-          <input id="mail" type="email" name="mail" required placeholder="Введите email*" />
+          <label for="email">Email</label>
+          <input value="<?php if (isset($data)) {
+                          echo $data['email'];
+                        } ?>" id="email" type="email" name="email" required placeholder="Введите email*" />
+          <?php if (isset($errors)) {
+            echo $errors['email'] ?? '';
+          } ?>
         </div>
 
         <div class="form__block">
           <label for="company">Компания</label>
-          <input id="company" type="text" name="company" placeholder="Введите название компании" />
+          <input value="<?php if (isset($data)) {
+                          echo $data['company'] ?? '';
+                        } ?>" id="company" type="text" name="company" placeholder="Введите название компании" />
         </div>
 
         <div class="form__block">
           <label for="position">Должность</label>
-          <input id="position" type="text" name="position" placeholder="Введите должность" />
+          <input value="<?php if (isset($data)) {
+                          echo $data['position'] ?? '';
+                        } ?>" id="position" type="text" name="position" placeholder="Введите должность" />
         </div>
 
         <div class="form__block">
           <label for="tel">Телефон</label>
-          <input id="tel1" type="tel" name="tel1" placeholder="Введите номер телефона" />
-          <input id="tel2" type="tel" name="tel2" placeholder="Введите доп. номер телефона" />
-          <input id="tel3" type="tel" name="tel3" placeholder="Введите доп. номер телефона" />
+          <input value="<?php if (isset($data)) {
+                          echo $data['phone1'] ?? '';
+                        } ?>" id="phone1" type="tel" name="phone1" placeholder="Введите номер телефона" />
+          <input value="<?php if (isset($data)) {
+                          echo $data['phone2'] ?? '';
+                        } ?>" id="phone2" type="tel" name="phone2" placeholder="Введите доп. номер телефона" />
+          <input value="<?php if (isset($data)) {
+                          echo $data['phone3'] ?? '';
+                        } ?>" id="phone3" type="tel" name="phone3" placeholder="Введите доп. номер телефона" />
+
+          <?php if (isset($errors)) {
+            echo $errors['phone'] ?? '';
+          } ?>
         </div>
 
-        <div class="form__btns">
-          <button class="button form__button form__button-reset" type="reset">
-            Очистить
-          </button>
+        <div class="form__btn">
           <button class="button form__button form__button-add" type="submit">
             Добавить
           </button>
@@ -71,3 +106,7 @@
 </body>
 
 </html>
+
+<?php
+session_unset();
+?>

@@ -1,7 +1,6 @@
 <?php
 
 require_once dirname(__DIR__) . '/config/config.php';
-require_once dirname(__DIR__) . '/helpers/uniqueEmail.php';
 
 class Database
 {
@@ -65,7 +64,7 @@ class Database
       $sql = "SELECT * FROM accounts WHERE `id` = ?";
       $stmt = $this->connect->prepare($sql);
       $stmt->execute([$id]);
-      $account = $stmt->fetch(PDO::FETCH_LAZY);
+      $account = $stmt->fetch(PDO::FETCH_ASSOC);
 
       return $account;
     } catch (PDOException $e) {
@@ -94,35 +93,30 @@ class Database
   {
     $name = $data['name'];
     $surname = $data['surname'];
-    $email = $data['mail'];
+    $email = $data['email'];
     $company = $data['company'];
     $position = $data['position'];
-    $phone1 = $data['tel1'];
-    $phone2 = $data['tel2'];
-    $phone3 = $data['tel3'];
+    $phone1 = $data['phone1'];
+    $phone2 = $data['phone2'];
+    $phone3 = $data['phone3'];
 
-    if (!checkUniqueEmail($this->connect, $email)) {
-      try {
-        $sql = "INSERT INTO `accounts` (`id`, `name`, `surname`, `email`, `company`, `position`, `phone1`, `phone2`, `phone3`) VALUES (:id, :name, :surname, :email, :company, :position, :phone1, :phone2, :phone3)";
-        $params = [
-          ':id' => NULL,
-          ':name' => $name,
-          ':surname' => $surname,
-          ':email' => $email,
-          ':company' => $company,
-          ':position' => $position,
-          ':phone1' => $phone1,
-          ':phone2' => $phone2,
-          ':phone3' => $phone3,
-        ];
-        $stmt = $this->connect->prepare($sql);
-        $stmt->execute($params);
-      } catch (PDOException $e) {
-        print "Error!: " . $e->getMessage();
-        die();
-      }
-    } else {
-      print "Error!: Email must be unique";
+    try {
+      $sql = "INSERT INTO `accounts` (`id`, `name`, `surname`, `email`, `company`, `position`, `phone1`, `phone2`, `phone3`) VALUES (:id, :name, :surname, :email, :company, :position, :phone1, :phone2, :phone3)";
+      $params = [
+        ':id' => NULL,
+        ':name' => $name,
+        ':surname' => $surname,
+        ':email' => $email,
+        ':company' => $company,
+        ':position' => $position,
+        ':phone1' => $phone1,
+        ':phone2' => $phone2,
+        ':phone3' => $phone3,
+      ];
+      $stmt = $this->connect->prepare($sql);
+      $stmt->execute($params);
+    } catch (PDOException $e) {
+      print "Error!: " . $e->getMessage();
       die();
     }
   }
@@ -132,35 +126,30 @@ class Database
     $id = $data['id'];
     $name = $data['name'];
     $surname = $data['surname'];
-    $email = $data['mail'];
+    $email = $data['email'];
     $company = $data['company'];
     $position = $data['position'];
-    $phone1 = $data['tel1'];
-    $phone2 = $data['tel2'];
-    $phone3 = $data['tel3'];
+    $phone1 = $data['phone1'];
+    $phone2 = $data['phone2'];
+    $phone3 = $data['phone3'];
 
-    if (!checkUniqueEmail($this->connect, $email, $id)) {
-      try {
-        $sql = "UPDATE `accounts` SET `name` = :name, `surname` = :surname, `email` = :email, `company` = :company, `position` = :position, `phone1` = :phone1, `phone2` = :phone2, `phone3` = :phone3 WHERE `accounts`.`id`= :id";
-        $params = [
-          ':id' => $id,
-          ':name' => $name,
-          ':surname' => $surname,
-          ':email' => $email,
-          ':company' => $company,
-          ':position' => $position,
-          ':phone1' => $phone1,
-          ':phone2' => $phone2,
-          ':phone3' => $phone3,
-        ];
-        $stmt = $this->connect->prepare($sql);
-        $stmt->execute($params);
-      } catch (PDOException $e) {
-        print "Error!: " . $e->getMessage();
-        die();
-      }
-    } else {
-      print "Error!: Email must be unique";
+    try {
+      $sql = "UPDATE `accounts` SET `name` = :name, `surname` = :surname, `email` = :email, `company` = :company, `position` = :position, `phone1` = :phone1, `phone2` = :phone2, `phone3` = :phone3 WHERE `accounts`.`id`= :id";
+      $params = [
+        ':id' => $id,
+        ':name' => $name,
+        ':surname' => $surname,
+        ':email' => $email,
+        ':company' => $company,
+        ':position' => $position,
+        ':phone1' => $phone1,
+        ':phone2' => $phone2,
+        ':phone3' => $phone3,
+      ];
+      $stmt = $this->connect->prepare($sql);
+      $stmt->execute($params);
+    } catch (PDOException $e) {
+      print "Error!: " . $e->getMessage();
       die();
     }
   }

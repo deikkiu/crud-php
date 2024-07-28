@@ -2,13 +2,22 @@
 
 require_once dirname(__DIR__) . '/core/Database.php';
 
-$id = $_GET['id'];
+session_start();
 
 $db = new Database();
-$account = $db->getAccountById($id);
+$id = $_GET['id'];
+
+$data = $_SESSION['form_data1'] ?? null;
+$errors = $_SESSION['form_errors1'] ?? null;
+
+var_dump($data);
+var_dump($errors);
+
+$account = isset($data) ? $data : $db->getAccountById($id);
+
+var_dump($account);
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -43,34 +52,47 @@ $account = $db->getAccountById($id);
 
         <div class="form__block">
           <label for="name">Имя</label>
-          <input value="<?= $account['name'] ?>" id="name" type="text" name="name" required placeholder="Введите имя*" />
+          <input value="<?= $account['name']; ?>" id="name" type="text" name="name" required placeholder="Введите имя*" />
+          <?php if (isset($errors)) {
+            echo $errors['name'] ?? '';
+          } ?>
         </div>
 
         <div class="form__block">
           <label for="surname">Фамилия</label>
-          <input value="<?= $account['surname'] ?>" id="surname" type="text" name="surname" required placeholder="Введите фамилия*" />
+          <input value="<?= $account['surname']; ?>" id="surname" type="text" name="surname" required placeholder="Введите фамилия*" />
+          <?php if (isset($errors)) {
+            echo $errors['surname'] ?? '';
+          } ?>
         </div>
 
         <div class="form__block">
-          <label for="mail">Email</label>
-          <input value="<?= $account['email'] ?>" id="mail" type="email" name="mail" required placeholder="Введите email*" />
+          <label for="email">Email</label>
+          <input value="<?= $account['email']; ?>" id="email" type="email" name="email" required placeholder="Введите email*" />
+          <?php if (isset($errors)) {
+            echo $errors['email'] ?? '';
+          } ?>
         </div>
 
         <div class="form__block">
           <label for="company">Компания</label>
-          <input value="<?= $account['company'] ?>" id="company" type="text" name="company" placeholder="Введите название компании" />
+          <input value="<?= $account['company']; ?>" id="company" type="text" name="company" placeholder="Введите название компании" />
         </div>
 
         <div class="form__block">
           <label for="position">Должность</label>
-          <input value="<?= $account['position'] ?>" id="position" type="text" name="position" placeholder="Введите должность" />
+          <input value="<?= $account['position']; ?>" id="position" type="text" name="position" placeholder="Введите должность" />
         </div>
 
         <div class="form__block">
           <label for="tel">Телефон</label>
-          <input value="<?= $account['phone1'] ?>" id="tel1" type="tel" name="tel1" placeholder="Введите номер телефона" />
-          <input value="<?= $account['phone2'] ?>" id="tel2" type="tel" name="tel2" placeholder="Введите доп. номер телефона" />
-          <input value="<?= $account['phone3'] ?>" id="tel3" type="tel" name="tel3" placeholder="Введите доп. номер телефона" />
+          <input value="<?= $account['phone1']; ?>" id="phone1" type="tel" name="phone1" placeholder="Введите номер телефона" />
+          <input value="<?= $account['phone2']; ?>" id="phone2" type="tel" name="phone2" placeholder="Введите доп. номер телефона" />
+          <input value="<?= $account['phone3']; ?>" id="phone3" type="tel" name="phone3" placeholder="Введите доп. номер телефона" />
+
+          <?php if (isset($errors)) {
+            echo $errors['phone'] ?? '';
+          } ?>
         </div>
 
         <div class="form__btn">
@@ -84,3 +106,7 @@ $account = $db->getAccountById($id);
 </body>
 
 </html>
+
+<?php
+session_unset();
+?>

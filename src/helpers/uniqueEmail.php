@@ -1,8 +1,12 @@
 <?php
 
-function checkUniqueEmail($connect, $email, $id = null)
+require_once dirname(__DIR__) . '/core/Database.php';
+
+function checkUniqueEmail($email, $id)
 {
-  $stmt = $connect->prepare("SELECT COUNT(*) FROM accounts WHERE email = ? AND id != ?");
+  $db = new Database();
+
+  $stmt = $db->connect->prepare("SELECT COUNT(*) FROM accounts WHERE email = ? AND id != ?");
   $stmt->execute([$email, $id]);
 
   $result = $stmt->fetch();

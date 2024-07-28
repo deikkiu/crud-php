@@ -305,6 +305,13 @@ form {
   color: #666666;
 }
 
+.form__input-error {
+  font-size: 13px;  
+  font-weight: 400;
+
+  color: var(--red-color);
+}
+
 .form__btns {
   display: flex;
   align-items: center;

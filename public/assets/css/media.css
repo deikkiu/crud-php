@@ -109,6 +109,10 @@
     font-size: 14px;
   }
 
+  .form__input-error {
+    font-size: 12px;  
+  }
+
   .form__block input::placeholder {
     font-size: 14px;
   }
@@ -173,6 +177,10 @@
       padding: 14px;
       font-size: 14px;
     }
+
+    .form__input-error {
+      font-size: 11px;  
+    }
   
     .form__block input::placeholder {
       font-size: 14px;
@@ -233,6 +241,10 @@
 
   .form__block input {
     padding: 12px;
+  }
+
+  .form__input-error {
+    font-size: 10px;  
   }
 
   .form__button {
