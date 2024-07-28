@@ -4,13 +4,14 @@ require_once dirname(__DIR__) . '/config/config.php';
 
 class Database
 {
+  // mysql values for connect
   private $host = HOST;
   private $user = USER;
   private $password = PASSWORD;
   private $database = DATABASE;
 
+  // pdo connect
   public $connect;
-  public $error;
 
   public function __construct()
   {
@@ -27,6 +28,7 @@ class Database
     }
   }
 
+  // db getters
   public function getAllAccounts()
   {
     try {
@@ -87,7 +89,7 @@ class Database
     }
   }
 
-  // crud methods
+  // db crud methods
 
   public function createAccount($data)
   {

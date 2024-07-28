@@ -5,15 +5,16 @@ require_once __DIR__ . '/uniqueEmail.php';
 function clearFormData($value)
 {
   $value = trim($value);
-  $value = stripslashes($value); // Убирает /
-  $value = strip_tags($value); // Убирает html теги
-  $value = htmlspecialchars($value); // Приобразует html символы
+  $value = stripslashes($value); // Delete /
+  $value = strip_tags($value); // Delete html tags
+  $value = htmlspecialchars($value); // Сonverts html chars
 
   return $value;
 }
 
 function validateData($data)
 {
+  // data
   $id = $data['id'] ?? null;
 
   $name = clearFormData($data['name']);
@@ -23,7 +24,7 @@ function validateData($data)
   $phone2 = clearFormData($data['phone2']);
   $phone3 = clearFormData($data['phone3']);
 
-  // filter_var($mail, FILTER_VALIDATE_EMAIL)
+  // patterns
   $pattern_phone = '/^\+?[\(]?[0-9]{1,4}[\)]?[-\s\.]?[0-9]{1,4}[-\s\.]?[0-9]{1,4}[-\s\.]?[0-9]{1,9}$/';
   $pattern_name = '/^[\p{L}]+$/u';
 
