@@ -108,5 +108,5 @@ $errors = $_SESSION['form_errors'] ?? null;
 </html>
 
 <?php
-session_unset();
+session_destroy();
 ?>

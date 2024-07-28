@@ -34,6 +34,13 @@ require_once __DIR__ . '/src/helpers/pagination.php';
     </section>
 
     <section class="account">
+
+      <?php
+      if ($length < 1) {
+        echo '<p class="account__empty">Нажмите кнопку - <b>ДОБАВИТЬ АККАУНТ</b>, чтобы создать новый аккаунт.</p>';
+      }
+      ?>
+
       <div class="account__list">
         <?php
         foreach ($accounts as $account) {

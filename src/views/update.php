@@ -7,15 +7,10 @@ session_start();
 $db = new Database();
 $id = $_GET['id'];
 
-$data = $_SESSION['form_data1'] ?? null;
-$errors = $_SESSION['form_errors1'] ?? null;
-
-var_dump($data);
-var_dump($errors);
+$data = $_SESSION['form_data'] ?? null;
+$errors = $_SESSION['form_errors'] ?? null;
 
 $account = isset($data) ? $data : $db->getAccountById($id);
-
-var_dump($account);
 
 ?>
 
@@ -108,5 +103,5 @@ var_dump($account);
 </html>
 
 <?php
-session_unset();
+session_destroy();
 ?>

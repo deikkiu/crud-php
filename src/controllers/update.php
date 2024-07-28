@@ -3,6 +3,8 @@
 require_once dirname(__DIR__) . '/core/Database.php';
 require_once dirname(__DIR__) . '/helpers/validation.php';
 
+session_start();
+
 $db = new Database();
 
 [$flag, $errors] = validateData($_POST);

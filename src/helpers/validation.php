@@ -18,7 +18,7 @@ function validateData($data)
 
   $name = clearFormData($data['name']);
   $surname = clearFormData($data['surname']);
-  $email = clearFormData($data['email']);
+  $email = $data['email'];
   $phone1 = clearFormData($data['phone1']);
   $phone2 = clearFormData($data['phone2']);
   $phone3 = clearFormData($data['phone3']);
@@ -59,7 +59,7 @@ function validateData($data)
       $flag = false;
     }
 
-    if (!checkUniqueEmail($email, $id)) {
+    if (checkUniqueEmail($email, $id)) {
       $errors['email'] = '<div class="form__input-error">Email должен быть уникальным!</div>';
       $flag = false;
     }
