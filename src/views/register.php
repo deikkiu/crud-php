@@ -1,103 +1,90 @@
 <?php
 
+session_start();
+
+$data = $_SESSION['form_data'] ?? null;
+$errors = $_SESSION['form_errors'] ?? null;
+
 ?>
 
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
-<?php include_once __DIR__ . '/components/head.php'?>
-<body>
+<html lang="ru">
+<head>
+	<?php require_once '../components/head.php' ?>
+	<title>Регистрация</title>
+</head>
 
-<form class="card" action="src/actions/register.php" method="post" enctype="multipart/form-data">
-    <h2>Регистрация</h2>
+<body class="body__form">
+<main class="main main__form">
+	<section class="form">
 
-    <label for="name">
-        Имя
-        <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Иванов Иван"
-            value="<?php echo old('name') ?>"
-            <?php echo validationErrorAttr('name'); ?>
-        >
-        <?php if(hasValidationError('name')): ?>
-            <small><?php echo validationErrorMessage('name'); ?></small>
-        <?php endif; ?>
-    </label>
+		<div class="back">
+			<h1 class="form__title">Регистрация</h1>
+		</div>
 
-    <label for="email">
-        E-mail
-        <input
-            type="text"
-            id="email"
-            name="email"
-            placeholder="ivan@areaweb.su"
-            value="<?php echo old('email') ?>"
-            <?php echo validationErrorAttr('email'); ?>
-        >
-        <?php if(hasValidationError('email')): ?>
-            <small><?php echo validationErrorMessage('email'); ?></small>
-        <?php endif; ?>
-    </label>
+		<form action="../controllers/register.php" method="post">
+			<div class="form__block">
+				<label for="name">
+					Имя
+				</label>
+				<input value="<?php if (isset($data)) {
+					echo $data['name'];
+				} ?>" id="name" type="text" name="name" required placeholder="Введите имя*"/>
+				<?php if (isset($errors['name'])) {
+					echo $errors['name'];
+				} ?>
+			</div>
 
-    <label for="avatar">Изображение профиля
-        <input
-            type="file"
-            id="avatar"
-            name="avatar"
-            <?php echo validationErrorAttr('avatar'); ?>
-        >
-        <?php if(hasValidationError('avatar')): ?>
-            <small><?php echo validationErrorMessage('avatar'); ?></small>
-        <?php endif; ?>
-    </label>
+			<div class="form__block">
+				<label for="email">Email</label>
+				<input value="<?php if (isset($data)) {
+					echo $data['email'];
+				} ?>" id="email" type="email" name="email" required placeholder="Введите email*"/>
+				<?php if (isset($errors['email'])) {
+					echo $errors['email'];
+				} ?>
+			</div>
 
-    <div class="grid">
-        <label for="password">
-            Пароль
-            <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="******"
-                <?php echo validationErrorAttr('password'); ?>
-            >
-            <?php if(hasValidationError('password')): ?>
-                <small><?php echo validationErrorMessage('password'); ?></small>
-            <?php endif; ?>
-        </label>
+			<div class="form__block">
+				<div class="line">
+					<label for="password">
+						Пароль
+						<input id="password" type="password" name="password" required placeholder="Введите пароль*"/>
+					</label>
 
-        <label for="password_confirmation">
-            Подтверждение
-            <input
-                type="password"
-                id="password_confirmation"
-                name="password_confirmation"
-                placeholder="******"
-            >
-        </label>
-    </div>
+					<label for="password-confirm">
+						Повторите пароль
+						<input id="password-confirm" type="password" name="password-confirm" required
+						       placeholder="Повторите пароль*"/>
+					</label>
+				</div>
 
-    <fieldset>
-        <label for="terms">
-            <input
-                type="checkbox"
-                id="terms"
-                name="terms"
-            >
-            Я принимаю все условия пользования
-        </label>
-    </fieldset>
+				<?php if (isset($errors['password'])) {
+					echo $errors['password'];
+				} ?>
+			</div>
 
-    <button
-        type="submit"
-        id="submit"
-        disabled
-    >Продолжить</button>
-</form>
+			<div class="form__block checkbox">
+				<input type="checkbox" name="agree" required/>
+				<label for="email">
+					Я принимаю все условия пользования!
+				</label>
+			</div>
 
-<p>У меня уже есть <a href="/">аккаунт</a></p>
+			<div class="form__btn">
+				<button class="button form__button form__button-add" type="submit">
+					Продолжить
+				</button>
+			</div>
+		</form>
 
-<?php include_once __DIR__ . '/components/scripts.php' ?>
+
+		<a class="link__login" href="login.php">У меня уже есть <span>аккаунт</span></a>
+	</section>
+</main>
 </body>
 </html>
+
+<?php
+session_destroy();
+?>

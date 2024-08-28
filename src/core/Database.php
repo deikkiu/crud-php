@@ -1,24 +1,29 @@
 <?php
 
+namespace App\core;
+
+use PDO;
+use PDOException;
+
 require_once dirname(__DIR__) . '/config/config.php';
 
 class Database
 {
   // mysql values for connect
-  private $host = HOST;
-  private $user = USER;
-  private $password = PASSWORD;
-  private $database = DATABASE;
+  private string $host = HOST;
+  private string $user = USER;
+  private string $password = PASSWORD;
+  private string $database = DATABASE;
 
   // pdo connect
-  public $connect;
+  public PDO $connect;
 
   public function __construct()
   {
     $this->dbConnect();
   }
 
-  private function dbConnect()
+  private function dbConnect(): void
   {
     try {
       $this->connect = new PDO("mysql:host=$this->host;dbname=$this->database;", $this->user, $this->password);
@@ -78,20 +83,34 @@ class Database
   public function getAccountsLength()
   {
     try {
-      $sql = "SELECT * FROM accounts";
+      $sql = "SELECT COUNT(*) FROM accounts";
       $stmt = $this->connect->query($sql);
-      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	    $result = $stmt->fetch();
 
-      return count($result);
+      return $result;
     } catch (PDOException $e) {
       print "Error!: " . $e->getMessage();
       die();
     }
   }
 
-  // db crud methods
+	public function getUser(string $email)
+	{
+		try {
+			$sql = "SELECT id FROM users WHERE `email` = ?";
+			$stmt = $this->connect->prepare($sql);
+			$stmt->execute([$email]);
+			[$user_id] = $stmt->fetch();
 
-  public function createAccount($data)
+			return $user_id;
+		} catch (PDOException $e) {
+			print "Error!: " . $e->getMessage();
+			die();
+		}
+	}
+
+  // db crud methods
+  public function createAccount($data): void
   {
     $name = $data['name'];
     $surname = $data['surname'];
@@ -123,7 +142,7 @@ class Database
     }
   }
 
-  public function updateAccount($data)
+  public function updateAccount($data): void
   {
     $id = $data['id'];
     $name = $data['name'];
@@ -156,7 +175,7 @@ class Database
     }
   }
 
-  public function deleteAccount($id)
+  public function deleteAccount($id): void
   {
     try {
       $sql = "DELETE FROM `accounts` WHERE `id` = ?";
@@ -168,4 +187,47 @@ class Database
       die();
     }
   }
+
+	// db user methods
+	public function registerUser($data): void
+	{
+		$email = $data['email'];
+		$password = $data['password'];
+		$name = $data['name'];
+
+		try {
+			$sql = "INSERT INTO `users` (`email`, `password`, `name`) VALUES (:email, :password, :name)";
+			$params = [
+				':email' => $email,
+				':password' => password_hash($password, PASSWORD_DEFAULT),
+				':name' => $name
+			];
+			$stmt = $this->connect->prepare($sql);
+			$stmt->execute($params);
+		} catch (PDOException $e) {
+			print "Error!: " . $e->getMessage();
+			die();
+		}
+	}
+
+	public function loginUser(string $email, string $password): bool
+	{
+		try {
+			$sql = "SELECT COUNT(*) FROM users WHERE email = :email AND password = :password";
+			$params = [
+				':email' => $email,
+				':password' => $password,
+			];
+			$stmt = $this->connect->prepare($sql);
+			$stmt->execute($params);
+
+			[$result] = $stmt->fetch();
+			return boolval($result);
+		} catch (PDOException $e) {
+			print "Error!: " . $e->getMessage();
+			die();
+		}
+	}
+
+
 }

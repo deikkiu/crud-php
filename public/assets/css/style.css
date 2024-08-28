@@ -253,6 +253,8 @@ main.main__form {
   width: 100%;
   max-width: 800px;
 
+  min-height: 100vh;
+
   background-color: var(--white-color);
 }
 
@@ -272,11 +274,37 @@ form {
 .form__block {
   display: flex;
   flex-direction: column;
-  
-  row-gap: 8px;
+}
+
+.form__block .line {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+}
+
+.form__block.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+
+.form__block.checkbox input {
+  display: flex;
+
+  margin: 0;
+
+  width: 16px;
+  height: 16px;
+
+  cursor: pointer;
 }
 
 .form__block label {
+  width: 100%;
+
   font-size: 12px;
   font-weight: 600;
 
@@ -286,6 +314,7 @@ form {
 .form__block input {
   width: 100%;
 
+  margin-top: 8px;
   padding: 16px;
   border: 1px solid #CCCCCC;
   border-radius: 8px;
@@ -372,5 +401,21 @@ form {
 
   color: var(--black-color);
 }
+
+/* login */
+.link__login {
+  display: block;
+
+  margin-top: 32px;
+
+  font-size: 16px;
+  color: var(--black-color);
+}
+
+.link__login span {
+  color: var(--main-color);
+}
+
+
 
 

@@ -1,13 +1,16 @@
 <?php
 
-require_once dirname(__DIR__) . '/core/Database.php';
-require_once dirname(__DIR__) . '/helpers/validation.php';
+require '../../vendor/autoload.php';
+
+use App\core\Database;
+use App\core\Validation;
 
 session_start();
 
 $db = new Database();
+$validation = new Validation($_POST);
 
-[$flag, $errors] = validateData($_POST);
+[$errors, $flag] = $validation->validateAccount();
 
 $id = $_POST['id'];
 

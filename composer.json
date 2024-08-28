@@ -1,14 +1,12 @@
 {
+    "name": "hootc/php-crud",
+    "require": {
+      "ext-pdo": "*",
+      "ext-mbstring": "*"
+    },
     "autoload": {
         "psr-4": {
             "App\\": "src/"
         }
-    },
-    "require": {
-        "php": "^8.1"
-    },
-    "require-dev": {
-        "symfony/var-dumper": "^6.4",
-        "laravel/pint": "^1.17"
     }
 }

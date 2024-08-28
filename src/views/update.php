@@ -1,6 +1,8 @@
 <?php
 
-require_once dirname(__DIR__) . '/core/Database.php';
+require '../../vendor/autoload.php';
+
+use App\core\Database;
 
 session_start();
 
@@ -10,7 +12,7 @@ $id = $_GET['id'];
 $data = $_SESSION['form_data'] ?? null;
 $errors = $_SESSION['form_errors'] ?? null;
 
-$account = isset($data) ? $data : $db->getAccountById($id);
+$account = $data ?? $db->getAccountById($id);
 
 ?>
 
@@ -18,19 +20,7 @@ $account = isset($data) ? $data : $db->getAccountById($id);
 <html lang="ru">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- favicon -->
-  <link rel="icon" type="image/png" href="../../public/favicon-16.png" sizes="16x16">
-  <link rel="icon" type="image/png" href="../../public/favicon-32.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="../../public/favicon-96.png" sizes="96x96">
-
-  <!-- styles -->
-  <link rel=" stylesheet" href="../../public/assets/css/normalize.css" />
-  <link rel="stylesheet" href="../../public/assets/css/font.css" />
-  <link rel="stylesheet" href="../../public/assets/css/style.css" />
-  <link rel="stylesheet" href="../../public/assets/css/media.css" />
+  <?php require_once dirname(__DIR__) . '/components/head.php' ?>
   <title>PHP CRUD - Update</title>
 </head>
 
@@ -39,7 +29,7 @@ $account = isset($data) ? $data : $db->getAccountById($id);
     <section class="form">
 
       <div class="back">
-        <a href="/" class="back__link">
+        <a href="home.php" class="back__link">
           <img src="../../public/assets/icons/back.svg" alt="Back">
         </a>
 

@@ -1,6 +1,8 @@
 <?php
 
-require_once dirname(__DIR__) . '/core/Database.php';
+require '../../vendor/autoload.php';
+
+use App\core\Database;
 
 $db = new Database();
 $db->deleteAccount($_GET['id']);

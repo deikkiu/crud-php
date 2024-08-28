@@ -235,11 +235,17 @@
     row-gap: 24px;
   }
 
-  .form__block {
-    row-gap: 4px;
-}
+  form {
+    row-gap: 20px;
+  }
+
+  .form__block .line {
+    flex-direction: column;
+    row-gap: 20px;
+  }
 
   .form__block input {
+    margin-top: 4px;
     padding: 12px;
   }
 

@@ -1,6 +1,6 @@
 <?php
 
-define('HOST', '127.0.0.1');
-define('USER', 'root');
-define('PASSWORD', '');
-define('DATABASE', 'crud');
+const HOST = '127.0.0.1';
+const USER = 'root';
+const PASSWORD = '';
+const DATABASE = 'crud';
